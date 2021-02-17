@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Sriracha&display=swap" rel="stylesheet">
     <!-- stylesheets -->
     <link rel="stylesheet" href="./styles/styles.css" />
     <!-- title -->
@@ -16,24 +16,29 @@
     <header class="header">
       <h1>Juego de memoria</h1>
     </header>
-    <section class="gameboard">
-      <div class="gameboard-container">
-        <div id="celeste" class="color celeste left" data-color="celeste"></div>
-        <div id="violeta" class="color violeta right" data-color="violeta"></div>
-        <div id="naranja" class="color naranja left" data-color="naranja"></div>
-        <div id="verde" class="color verde right" data-color="verde"></div>
+    <main class="main-container">
+      <section class="gameboard">
+        <div class="gameboard-container">
+          <div id="celeste" class="color celeste left" data-color="celeste"></div>
+          <div id="violeta" class="color violeta right" data-color="violeta"></div>
+          <div id="naranja" class="color naranja left" data-color="naranja"></div>
+          <div id="verde" class="color verde right" data-color="verde"></div>
+        </div>
+      </section>
+      <div class="button-container">
+        <button id="btnEmpezar" class="button" onclick="empezarJuego()">
+          Empezar a jugar!
+        </button>
+        <button id="btnEmpezar" class="button" onclick="empezarJuego()">
+          Puntuaciones
+        </button>
       </div>
-      <button id="btnEmpezar" class="btn-start" onclick="empezarJuego()">
-        Empezar a jugar!
-      </button>
-    </section>
+    </main>
     <footer class="footer">
-      <h2>Creado por: Cristian Buitrago</h2>
+      <p>Creado por: Cristian Buitrago</p>
       <p>
-        Repositorio:
         <a href="https://github.com/Santaka1882/simonDice"
-          >https://github.com/Santaka1882/simonDice</a
-        >
+          >Github
       </p>
     </footer>
   </body>
