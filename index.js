@@ -5,7 +5,7 @@ const rosa = document.getElementById('rosa')
 const amarillo= document.getElementById('amarillo')
 const verde = document.getElementById('verde')
 
-const ULTIMO_NIVEL = 1
+const ULTIMO_NIVEL = 10
 
 class Juego {
     constructor() {
@@ -123,7 +123,7 @@ class Juego {
                 btnEmpezar.classList.remove('hide')
                 btnpuntuaciones.classList.remove('hide')
                 this.eliminarEventos()
-                this.nivel = 0
+                this.nivel = 1
                 this.subnivel =0
             })
     }
@@ -134,7 +134,7 @@ class Juego {
                 btnEmpezar.classList.remove('hide')
                 btnpuntuaciones.classList.remove('hide')
                 this.eliminarEventos()
-                this.nivel = 0
+                this.nivel = 1
                 this.subnivel =0
             })
     }
