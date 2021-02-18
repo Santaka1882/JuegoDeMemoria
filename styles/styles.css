@@ -69,6 +69,7 @@ body {
   min-height: 100px;
   display: inline-block;
   cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 .celeste {
@@ -76,23 +77,23 @@ body {
 }
 
 .celeste.light {
-  background: rgba(255, 255, 255, 0.1);
+  background: #acfffe;
 }
 
-.violeta {
-  background: var(--mimi-pink);
+.rosa {
+  background: #f36387;
 }
 
-.violeta.light {
-  background: rgba(255, 255, 255, 0.1);;
+.rosa.light {
+  background: #ffbdcd;
 }
 
-.naranja {
+.amarillo {
   background: var(--green-yellow-crayola);
 }
 
-.naranja.light {
-  background: rgba(255, 255, 255, 0.1);;
+.amarillo.light {
+  background: #fff5c2;
 }
 
 .verde {
@@ -100,7 +101,7 @@ body {
 }
 
 .verde.light {
-  background: rgba(255, 255, 255, 0.1);;
+  background: #b6ffd2;
 }
 
 .button-container {
