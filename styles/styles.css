@@ -41,6 +41,22 @@ body {
   height: 80vh;
 }
 
+.score {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.score-container h2 {
+  font-size: 2rem;
+}
+
+.score-container span {
+  font-size: 1.5rem;
+}
+
 .gameboard {
   display: flex;
   flex-direction: column;

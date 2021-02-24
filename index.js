@@ -5,6 +5,9 @@ const rosa = document.getElementById('rosa')
 const amarillo= document.getElementById('amarillo')
 const verde = document.getElementById('verde')
 
+const score = document.querySelector('.points')
+const scoreTitle = document.querySelector('.score-title')
+
 const ULTIMO_NIVEL = 10
 
 let puntuacion = 0
@@ -21,6 +24,8 @@ class Juego {
         btnRanked.classList.add('hide')
         btnCasual.classList.add('hide')
         this.nivel = 1
+        scoreTitle.textContent = 'Nivel'
+        score.textContent = this.nivel
         this.colores = {
             celeste,
             rosa,
@@ -69,13 +74,13 @@ class Juego {
         for(let i = 0; i < this.nivel; i++) {
             const color = this.transformarNumeroAColor(this.secuencia[i])
 
-            setTimeout(() => this.iluminarColor(color), 1000 * i)
-        }
+            setTimeout(() => this.iluminarColor(color), 700 * i)
+        }  
     }
 
     iluminarColor(color) {
         this.colores[color].classList.add('light')
-        setTimeout(() => this.apagarColor(color), 350)
+        setTimeout(() => this.apagarColor(color), 250)
     }
 
     apagarColor(color) {
@@ -104,10 +109,17 @@ class Juego {
         if (numeroColor === this.secuencia[this.subnivel]) {
             this.subnivel++
             if (this.subnivel === this.nivel) {
-                this.nivel++
+                if (this.nivel < 10) {
+                    this.nivel++
+                } else {
+                    this.nivel = 10
+                }
+                
                 this.eliminarEventos()
 
-                if (this.nivel === ULTIMO_NIVEL + 1) {
+                score.textContent = this.nivel
+
+                if (this.nivel === ULTIMO_NIVEL) {
                     this.ganar()
                 } else {
                     this.subnivel = 0
@@ -122,11 +134,13 @@ class Juego {
     ganar() {
         swal('Ganaste :D', '¡Tienes una memoria genial!', 'success')
             .then(() => {
-                btnEmpezar.classList.remove('hide')
-                btnpuntuaciones.classList.remove('hide')
+                btnRanked.classList.remove('hide')
+                btnCasual.classList.remove('hide')
                 this.eliminarEventos()
                 this.nivel = 1
-                this.subnivel =0
+                this.subnivel = 0
+                score.textContent = ""
+                scoreTitle.textContent = ""
             })
     }
 
@@ -138,11 +152,28 @@ class Juego {
                 this.eliminarEventos()
                 this.nivel = 1
                 this.subnivel =0
+                score.textContent = ""
+                scoreTitle.textContent = ""
             })
     }
 }
 
 class JuegoRanked extends Juego{
+    inicializar() {
+        this.elegirColor = this.elegirColor.bind(this)
+        btnRanked.classList.add('hide')
+        btnCasual.classList.add('hide')
+        this.nivel = 1
+        scoreTitle.textContent = 'Puntuacion:'
+        score.textContent = `${puntuacion} puntos`
+        this.colores = {
+            celeste,
+            rosa,
+            amarillo,
+            verde
+        }
+    }
+
     generarSecuencia() {
         this.secuencia = new Array(100).fill(0).map(n => Math.floor(Math.random() * 4))
     }
@@ -159,29 +190,32 @@ class JuegoRanked extends Juego{
 
                 puntuacion = this.nivel * 100 - 100
 
+                score.textContent = `${puntuacion} puntos`
+
                 this.eliminarEventos()
 
                 if (this.nivel === ULTIMO_NIVEL + 1) {
                     this.ganar()
                 } else {
                     this.subnivel = 0
-                    setTimeout(() => this.siguienteNivel(), 2000)
+                    setTimeout(() => this.siguienteNivel(), 1000)
                 } 
             }
         } else {
             this.terminar()
-            console.log(puntuacion)
         }
     }
 
     ganar() {
         swal('Llegaste al final!', 'Felicidades!', 'success')
             .then(() => {
-                btnEmpezar.classList.remove('hide')
-                btnpuntuaciones.classList.remove('hide')
+                btnRanked.classList.remove('hide')
+                btnCasual.classList.remove('hide')
                 this.eliminarEventos()
                 this.nivel = 1
-                this.subnivel =0
+                this.subnivel = 0
+                score.textContent = ""
+                scoreTitle.textContent = ""
             })
     }
 
@@ -199,6 +233,8 @@ class JuegoRanked extends Juego{
                 this.eliminarEventos()
                 this.nivel = 1
                 this.subnivel = 0
+                score.textContent = ""
+                scoreTitle.textContent = ""
             })
         })
     }
